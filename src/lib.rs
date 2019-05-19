@@ -3,20 +3,30 @@ mod tests {
     #[test]
     fn prints_stuff() {
         use super::*;
-        radix_fmt("asdf", 4);
+        println!("{}", radix_fmt("10", 2));
     }
 }
 
 use std::fmt::{Display, Formatter, Result};
+use std::f64;
 
-static TABLE: [char; 36] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+static TABLE: [char; 36] = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+                            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-pub fn radix_fmt(number: &str, obase: usize) {
+// TODO: write this function, aka finish this library
+pub fn radix_fmt(number: &str, obase: usize) -> String {
     if obase > 36 {
         panic!("LOOL");
     }
-    let parts: Vec<&str> = number.split('.').collect();
-    println!("{}.{}", format_integral("25", 5), format_fract(".225", 5));
+    match number {
+        "inf"  => return "inf".into(),
+        "-inf" => return "-inf".into(),
+        "NaN"  => return "NaN".into(),
+        _ => {},
+    }
+
+    return converted;
 }
 
 fn format_integral(n: &str, obase: usize) -> String {
